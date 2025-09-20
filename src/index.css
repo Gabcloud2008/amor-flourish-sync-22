@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Romantic Mobile App Design System - Soft pink theme with rounded typography */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Romantic Pink Color Palette */
+    --background: 343 20% 96%;
+    --background-secondary: 343 30% 94%;
+    --foreground: 345 8% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 345 8% 25%;
+    --card-soft: 343 40% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 8% 25%;
+
+    /* Primary romantic pink */
+    --primary: 343 65% 68%;
+    --primary-soft: 343 50% 85%;
+    --primary-light: 343 40% 92%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft secondary colors */
+    --secondary: 343 30% 94%;
+    --secondary-foreground: 345 8% 35%;
+
+    --muted: 343 25% 93%;
+    --muted-foreground: 345 5% 50%;
+
+    --accent: 195 60% 85%;
+    --accent-light: 195 40% 92%;
+    --accent-foreground: 195 60% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 343 20% 88%;
+    --input: 343 20% 90%;
+    --ring: 343 65% 68%;
+
+    /* Romantic gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(343, 65%, 68%), hsl(343, 50%, 85%));
+    --gradient-soft: linear-gradient(180deg, hsl(343, 40%, 98%), hsl(343, 30%, 94%));
+    --gradient-accent: linear-gradient(135deg, hsl(195, 60%, 85%), hsl(195, 40%, 92%));
+
+    /* Elegant shadows */
+    --shadow-soft: 0 2px 12px -4px hsl(343 65% 68% / 0.15);
+    --shadow-card: 0 4px 20px -8px hsl(343 50% 85% / 0.25);
+    --shadow-romantic: 0 8px 32px -12px hsl(343 65% 68% / 0.3);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --radius: 1rem;
+    --radius-card: 1.5rem;
+    --radius-button: 0.875rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito antialiased overflow-x-hidden;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 100%);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Romantic animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Romantic button styles */
+  .btn-romantic {
+    @apply bg-gradient-to-r from-primary to-primary-soft text-primary-foreground font-medium px-6 py-3 rounded-[var(--radius-button)] shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-romantic)] hover:scale-105 active:scale-95;
+  }
+
+  .btn-soft {
+    @apply bg-card-soft text-secondary-foreground font-medium px-6 py-3 rounded-[var(--radius-button)] border border-border shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] hover:bg-primary-light hover:shadow-[var(--shadow-card)];
+  }
+
+  /* Card components */
+  .card-romantic {
+    @apply bg-card backdrop-blur-sm rounded-[var(--radius-card)] p-6 shadow-[var(--shadow-card)] border border-border/50 transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-romantic)];
+  }
+
+  .card-soft {
+    @apply bg-card-soft rounded-[var(--radius-card)] p-4 border border-border/30 transition-[var(--transition-smooth)];
+  }
+
+  /* Input styles */
+  .input-romantic {
+    @apply bg-card border border-border rounded-[var(--radius-button)] px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-[var(--transition-smooth)];
+  }
+
+  /* Navigation styles */
+  .nav-item-active {
+    @apply text-primary bg-primary-light rounded-[var(--radius-button)] px-3 py-2 transition-[var(--transition-smooth)];
+  }
+
+  .nav-item {
+    @apply text-muted-foreground hover:text-primary hover:bg-primary-light/50 rounded-[var(--radius-button)] px-3 py-2 transition-[var(--transition-smooth)];
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
